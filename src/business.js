@@ -1,5 +1,5 @@
 // business logic
-
+import { endofTurn } from './main.js';
 //creates our constructor
 export function Player() {
   this.name = name;
@@ -8,23 +8,17 @@ export function Player() {
   this.permScore = 0;
 }
 
-// var rollDice = function() {
-//   return
-// };
-
 Player.prototype.roll = function() {
   this.currentRoll = Math.floor((Math.random() * 6) + 1);
 };
 
-Player.prototype.playerRoll = function(callback) {
+Player.prototype.handlePlayerRoll = function() {
   if(this.currentRoll === 1) {
     this.tempScore = 0;
-    // do something with front end
-    callback();
-    this.currentRoll = 0;
+     //toggles to the next player on UI
+    endofTurn();
   } else {
     this.tempScore += this.currentRoll;
-    // return;
   }
 };
 

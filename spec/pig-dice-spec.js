@@ -1,6 +1,5 @@
 import { Player } from './../src/business.js';
 
-
 describe('Player', function() {
 
   it('should register that someone clicked a button and created a new player', function() {
@@ -23,8 +22,29 @@ describe('Player', function() {
     expect(i).toBeGreaterThan(0);
     expect(i).toBeLessThan(7);
   });
+
+  it('should test that roll method will reset the tempScore if roll = 1', function() {
+    var player1 = new Player(1);
+    player1.currentRoll = 1;
+    player1.handlePlayerRoll();
+    expect(player1.tempScore).toBeLessThan(1);
+  });
+
+  it('should test that roll method will reset the tempScore if roll = 1', function() {
+    var player1 = new Player(1);
+    player1.roll();
+    player1.handlePlayerRoll();
+    var i = player1.tempScore;
+    expect(i).toBeGreaterThan(1);
+  });
 });
 
+
+// if (i === 0) {
+//   expect(i).toBeLessThan(1);
+// } else if (i !== 0 {
+//   expect(i).toBeGreaterThan(0);
+// })
 
 // If they click roll again the new roll is added to the previous roll value.
 // Example Input: click "roll" - "4", click "roll" - "2"
