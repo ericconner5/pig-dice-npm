@@ -30,14 +30,17 @@ describe('Player', function() {
     expect(player1.tempScore).toBeLessThan(1);
   });
 
-  it('should test that roll method will reset the tempScore if roll = 1', function() {
+//this is where we quit for the day... questions about whether tests will always ask if "1" from here on? why testing zero on next test bellow
+
+
+  it('should test that roll method will add the next roll to the previous if anything other than 1 is rolled', function() {
     var player1 = new Player(1);
-    player1.roll();
+    player1.currentRoll > 1;
     player1.handlePlayerRoll();
-    var i = player1.tempScore;
-    expect(i).toBeGreaterThan(1);
+    expect(player1.tempScore).toBeGreaterThan(1);
   });
 });
+
 
 
 // if (i === 0) {
