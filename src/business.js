@@ -1,29 +1,35 @@
 // business logic
 
 //creates our constructor
-export function Player(name, roll, tempScore, permScore) {
+export function Player() {
   this.name = name;
-  this.roll = 0;
+  this.currentRoll = 0;
   this.tempScore = 0;
   this.permScore = 0;
 }
 
-Player.prototype.playerRoll = function(callback) { //call function - WORKS
-  if(this.roll === 1) {
-    this.tempScore = 0;
+// var rollDice = function() {
+//   return
+// };
 
+Player.prototype.roll = function() {
+  this.currentRoll = Math.floor((Math.random() * 6) + 1);
+};
+
+Player.prototype.playerRoll = function(callback) {
+  if(this.currentRoll === 1) {
+    this.tempScore = 0;
     // do something with front end
     callback();
-
-    this.roll = 0;
+    this.currentRoll = 0;
   } else {
-    this.tempScore += this.roll;
-    return;
+    this.tempScore += this.currentRoll;
+    // return;
   }
 };
 
 Player.prototype.hold = function() { //WORKS
   this.permScore += this.tempScore;
   this.tempScore = 0;
-  return;
+  // return;
 };

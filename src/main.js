@@ -3,6 +3,10 @@ import './styles.css';
 import './sass/styles.scss';
 import { Player } from './business.js';
 
+// var rollDice = function() {
+//   return Math.floor((Math.random() * 6) + 1);
+// };
+
 // user interface logic
 $(document).ready(function() {
   // console.log(Player);
@@ -12,8 +16,8 @@ $(document).ready(function() {
   $("#roll1").submit(function(event) {
     event.preventDefault();
     // console.log("here");
-    player1.roll = rollDice(); //calls rollDice function
-    $("#rolledDice1").text(player1.roll); //shows current roll val - working
+    player1.roll();
+    $("#rolledDice1").text(player1.currentRoll); //shows current roll val - working
     player1.playerRoll(endofTurn);
     $("#tempTotal1").text(player1.tempScore);
   });
@@ -31,8 +35,8 @@ $(document).ready(function() {
 
   $("#roll2").submit(function(event) {
     event.preventDefault();
-    player2.roll = rollDice(); //calls rollDice function
-    $("#rolledDice2").text(player2.roll); //shows current roll val - working
+    player2.roll();
+    $("#rolledDice2").text(player2.currentRoll); //shows current roll val - working
     player2.playerRoll(endofTurn);
     $("#tempTotal2").text(player2.tempScore);
   });
@@ -58,7 +62,8 @@ $(document).ready(function() {
     $(".playerArea").toggle(750);
   }
 
-  var rollDice = function() {
-    return Math.floor((Math.random() * 6) + 1);
-  };
+
+  // var rollDice = function() {
+  //   return Math.floor((Math.random() * 6) + 1);
+  // };
 });
